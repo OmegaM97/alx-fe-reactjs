@@ -1,8 +1,17 @@
-import React from 'react';
-import UserInfo from './UserInfo';
+// src/components/UserProfile.jsx
 
-function ProfilePage() {
-  return <UserInfo />;
+import React, { useContext } from 'react';
+import UserContext from '../UserContext'; // adjust path if needed
+
+function UserProfile() {
+  const userData = useContext(UserContext);
+
+  return (
+    <div>
+      <p>Name: {userData.name}</p>
+      <p>Email: {userData.email}</p>
+    </div>
+  );
 }
 
-export default ProfilePage;
+export default UserProfile;
