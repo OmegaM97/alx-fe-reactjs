@@ -4,40 +4,70 @@ export const useRecipeStore = create((set, get) => ({
   recipes: [],
   searchTerm: '',
   filteredRecipes: [],
-  addRecipe: (newRecipe) =>
-    set((state) => {
-      const updatedRecipes = [...state.recipes, newRecipe];
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: filter(updatedRecipes, state.searchTerm),
-      };
-    }),
-  deleteRecipe: (id) =>
-    set((state) => {
-      const updatedRecipes = state.recipes.filter((r) => r.id !== id);
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: filter(updatedRecipes, state.searchTerm),
-      };
-    }),
-  updateRecipe: (updatedRecipe) =>
-    set((state) => {
-      const updatedRecipes = state.recipes.map((recipe) =>
-        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-      );
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: filter(updatedRecipes, state.searchTerm),
-      };
-    }),
+  favorites: [],
+  recommendations: [],
+  
+  // CRUD
+  addRecipe: (newRecipe) => {
+    const updatedRecipes = [...get().recipes, newRecipe];
+    return set({
+      recipes: updatedRecipes,
+      filteredRecipes: filter(updatedRecipes, get().searchTerm),
+    });
+  },
+
+  deleteRecipe: (id) => {
+    const updatedRecipes = get().recipes.filter((r) => r.id !== id);
+    return set({
+      recipes: updatedRecipes,
+      filteredRecipes: filter(updatedRecipes, get().searchTerm),
+      favorites: get().favorites.filter((fid) => fid !== id),
+    });
+  },
+
+  updateRecipe: (updatedRecipe) => {
+    const updatedRecipes = get().recipes.map((r) =>
+      r.id === updatedRecipe.id ? updatedRecipe : r
+    );
+    return set({
+      recipes: updatedRecipes,
+      filteredRecipes: filter(updatedRecipes, get().searchTerm),
+    });
+  },
+
+  // Search
   setSearchTerm: (term) =>
-    set((state) => ({
+    set({
       searchTerm: term,
-      filteredRecipes: filter(state.recipes, term),
-    })),
+      filteredRecipes: filter(get().recipes, term),
+    }),
+
+  // Favorites
+  addFavorite: (id) => {
+    if (!get().favorites.includes(id)) {
+      set({ favorites: [...get().favorites, id] });
+    }
+  },
+
+  removeFavorite: (id) =>
+    set({ favorites: get().favorites.filter((fid) => fid !== id) }),
+
+  // Recommendations
+  generateRecommendations: () => {
+    const favIds = get().favorites;
+    const allRecipes = get().recipes;
+
+    const recommended = allRecipes.filter(
+      (r) =>
+        !favIds.includes(r.id) &&
+        favIds.some((fid) => r.title.toLowerCase().includes(get().recipes.find(r => r.id === fid)?.title?.split(' ')[0]?.toLowerCase()))
+    );
+
+    set({ recommendations: recommended });
+  },
 }));
 
-// Utility function to filter recipes
+// Utility: Basic search filter
 const filter = (recipes, term) =>
   recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(term.toLowerCase())
