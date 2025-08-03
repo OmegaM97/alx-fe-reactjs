@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import { searchUsers } from "./services/githubApi";
+import Search from "./components/Search";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -56,6 +57,9 @@ const App = () => {
           </li>
         ))}
       </ul>
+
+      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>GitHub User Search</h1>
+      <Search />
     </div>
   );
 };
