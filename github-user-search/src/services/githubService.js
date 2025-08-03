@@ -24,7 +24,7 @@ const githubApi = axios.create({
  * @param {number} params.page - page number for pagination (default 1)
  * @returns {Promise<Object>} API response data containing users
  */
-export const searchUsersAdvanced = async ({ username, location, minRepos, page = 1 }) => {
+export const fetchUserData = async ({ username, location, minRepos, page = 1 }) => {
   let queryParts = [];
 
   if (username) queryParts.push(`${username} in:login`);
