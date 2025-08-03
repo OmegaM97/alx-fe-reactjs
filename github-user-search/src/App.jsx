@@ -23,6 +23,13 @@ const App = () => {
 
   return (
     <div style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
+      <div className="min-h-screen bg-gray-50 p-6">
+        <h1 className="text-4xl font-bold text-center mb-8">
+          GitHub User Search
+        </h1>
+        <Search />
+      </div>
+
       <h1>GitHub User Search</h1>
       <SearchBar onSearch={handleSearch} />
       {loading && <p>Loading...</p>}
@@ -49,7 +56,12 @@ const App = () => {
               style={{ borderRadius: "50%" }}
             />
             <div>
-              <a href={user.html_url} target="_blank" rel="noopener noreferrer" style={{ fontWeight: "bold", fontSize: "1.1rem" }}>
+              <a
+                href={user.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontWeight: "bold", fontSize: "1.1rem" }}
+              >
                 {user.login}
               </a>
               <p>ID: {user.id}</p>
@@ -57,9 +69,6 @@ const App = () => {
           </li>
         ))}
       </ul>
-
-      <h1 style={{ textAlign: "center", marginTop: "2rem" }}>GitHub User Search</h1>
-      <Search />
     </div>
   );
 };
