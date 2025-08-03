@@ -42,7 +42,7 @@ const Search = () => {
 
       {loading && <p>Loading...</p>}
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>Looks like we cant find the user</p>}
 
       {userData && (
         <div
