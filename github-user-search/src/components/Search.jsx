@@ -104,7 +104,7 @@ const Search = () => {
       )}
 
       {!loading && users.length === 0 && !error && (
-        <p className="text-gray-600">No users found. Try different criteria.</p>
+        <p className="text-gray-600">Looks like we cant find the user</p>
       )}
 
       <ul className="space-y-4">
