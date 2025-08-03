@@ -6,8 +6,14 @@ export const useRecipeStore = create((set, get) => ({
   filteredRecipes: [],
   favorites: [],
   recommendations: [],
-  
+
   // CRUD
+  setRecipes: (newRecipes) =>
+    set({
+      recipes: newRecipes,
+      filteredRecipes: filter(newRecipes, get().searchTerm),
+    }),
+
   addRecipe: (newRecipe) => {
     const updatedRecipes = [...get().recipes, newRecipe];
     return set({
@@ -60,7 +66,15 @@ export const useRecipeStore = create((set, get) => ({
     const recommended = allRecipes.filter(
       (r) =>
         !favIds.includes(r.id) &&
-        favIds.some((fid) => r.title.toLowerCase().includes(get().recipes.find(r => r.id === fid)?.title?.split(' ')[0]?.toLowerCase()))
+        favIds.some((fid) =>
+          r.title
+            .toLowerCase()
+            .includes(
+              get().recipes
+                .find((r) => r.id === fid)
+                ?.title?.split(' ')[0]?.toLowerCase()
+            )
+        )
     );
 
     set({ recommendations: recommended });
