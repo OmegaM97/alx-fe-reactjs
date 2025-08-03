@@ -17,6 +17,7 @@ const RecipeDetails = () => {
   return (
     <div>
       <h1>{recipe.title}</h1>
+      <p><strong>ID:</strong> {recipe.id}</p> {/* ✅ Ensure this is in JSX */}
       <p>{recipe.description}</p>
       <FavoriteButton recipeId={recipeId} />
       <EditRecipeForm recipe={recipe} />
