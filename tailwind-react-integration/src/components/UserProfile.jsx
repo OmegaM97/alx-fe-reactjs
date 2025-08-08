@@ -4,7 +4,7 @@ function UserProfile() {
       <img
         src="https://via.placeholder.com/150"
         alt="User"
-        className="rounded-full w-24 h-24 md:w-36 md:h-36 mx-auto hover:scale-110 transition-transform duration-300 ease-in-out"
+        className="rounded-full w-24 h-24 md:w-36 md:h-36 mx-auto hover:scale-110 sm:w-24 sm:h-24transition-transform duration-300 ease-in-out"
       />
       <h1 className="text-lg md:text-xl text-blue-800 my-4 hover:text-blue-500 transition-colors duration-300 ease-in-out cursor-pointer">
         John Doe
