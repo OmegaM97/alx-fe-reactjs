@@ -3,24 +3,40 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "https://via.placeholder.com/300x200",
+    "ingredients": [
+      "200g spaghetti",
+      "100g bacon",
+      "2 large eggs",
+      "50g parmesan cheese",
+      "Salt and black pepper"
+    ],
+    "instructions": [
+      "Cook spaghetti according to package instructions.",
+      "Fry bacon until crispy.",
+      "Beat eggs and mix with grated parmesan.",
+      "Drain pasta and mix quickly with bacon and egg mixture.",
+      "Serve with extra parmesan and black pepper."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/300x200"
-  },
-  {
-    "id": 3,
-    "title": "Avocado Toast",
-    "summary": "Crispy bread topped with mashed avocado, salt, pepper, and a drizzle of olive oil.",
-    "image": "https://via.placeholder.com/300x200"
-  },
-  {
-    "id": 4,
-    "title": "Chocolate Brownies",
-    "summary": "Rich, fudgy brownies with a gooey center and crispy edges.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "https://via.placeholder.com/300x200",
+    "ingredients": [
+      "500g chicken breast",
+      "200g tomato puree",
+      "100ml cream",
+      "1 onion, chopped",
+      "Spices: cumin, coriander, turmeric, garam masala"
+    ],
+    "instructions": [
+      "Marinate chicken in spices and yogurt for 1 hour.",
+      "Grill or pan-fry the chicken until cooked.",
+      "Fry onions and add tomato puree.",
+      "Add cream and simmer.",
+      "Add chicken and cook for another 5 minutes."
+    ]
   }
 ]

@@ -11,11 +11,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+    "autoprefixer": "^10.x.x",
+    "postcss": "^8.x.x",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwindcss": "^4.1.11",
-    "postcss": "^8.x.x",
-    "autoprefixer": "^10.x.x"
+    "react-router-dom": "^7.8.0",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
