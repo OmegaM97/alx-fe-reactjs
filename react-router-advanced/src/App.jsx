@@ -9,7 +9,7 @@ import {
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-import Post from "./components/Post";
+import BlogPost from "./components/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
@@ -24,8 +24,8 @@ export default function App() {
         <Link to="/profile" style={{ marginRight: 10 }}>
           Profile
         </Link>
-        <Link to="/post/123" style={{ marginRight: 10 }}>
-          Sample Post
+        <Link to="/blog/123" style={{ marginRight: 10 }}>
+          Sample Blog
         </Link>
         <button onClick={() => setIsAuthenticated(!isAuthenticated)}>
           {isAuthenticated ? "Logout" : "Login"}
@@ -46,8 +46,8 @@ export default function App() {
           }
         />
 
-        {/* Dynamic route */}
-        <Route path="/post/:id" element={<Post />} />
+        {/* Dynamic blog route */}
+        <Route path="/blog/:id" element={<BlogPost />} />
 
         {/* Fallback route */}
         <Route path="*" element={<Navigate to="/" />} />
