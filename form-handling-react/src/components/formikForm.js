@@ -1,4 +1,4 @@
-// src/components/FormikForm.jsx
+// src/components/formikForm.js
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -17,22 +17,19 @@ export default function FormikForm() {
 
   const handleSubmit = async (values, { resetForm, setStatus }) => {
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        }
-      );
+      const res = await fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
 
-      if (response.ok) {
+      if (res.ok) {
         setStatus("✅ User registered successfully!");
         resetForm();
       } else {
         setStatus("❌ Registration failed.");
       }
-    } catch (err) {
+    } catch {
       setStatus("❌ Network error.");
     }
   };
@@ -63,8 +60,8 @@ export default function FormikForm() {
 
             <div className="mb-2">
               <Field
-                name="email"
                 type="email"
+                name="email"
                 placeholder="Email"
                 className="border p-2 w-full"
               />
@@ -77,8 +74,8 @@ export default function FormikForm() {
 
             <div className="mb-2">
               <Field
-                name="password"
                 type="password"
+                name="password"
                 placeholder="Password"
                 className="border p-2 w-full"
               />
