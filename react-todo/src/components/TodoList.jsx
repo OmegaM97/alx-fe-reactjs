@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AddTodoForm from "./AddTodoForm";
 
 export default function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", completed: false },
     { id: 2, text: "Build a Todo App", completed: true },
-    { id: 3, text: "Write Tests", completed: false },
   ]);
 
   const addTodo = (text) => {
-    const newTodo = { id: Date.now(), text, completed: false };
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, { id: Date.now(), text, completed: false }]);
   };
 
   const toggleTodo = (id) => {
@@ -27,8 +25,9 @@ export default function TodoList() {
 
   return (
     <div>
+      <h1>Todo List</h1>
       <AddTodoForm addTodo={addTodo} />
-      <ul data-testid="todo-list">
+      <ul>
         {todos.map((todo) => (
           <li
             key={todo.id}
@@ -36,21 +35,11 @@ export default function TodoList() {
             style={{
               textDecoration: todo.completed ? "line-through" : "none",
               cursor: "pointer",
-              marginBottom: 6,
             }}
-            data-testid={`todo-item-${todo.id}`}
+            data-testid={`todo-${todo.id}`}
           >
             {todo.text}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteTodo(todo.id);
-              }}
-              style={{ marginLeft: 10 }}
-              data-testid={`delete-btn-${todo.id}`}
-            >
-              Delete
-            </button>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>
