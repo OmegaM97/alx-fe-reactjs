@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,8 +13,6 @@ import BlogPost from "./components/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   return (
     <Router>
       <nav style={{ marginBottom: 20 }}>
@@ -27,20 +25,17 @@ export default function App() {
         <Link to="/blog/123" style={{ marginRight: 10 }}>
           Sample Blog
         </Link>
-        <button onClick={() => setIsAuthenticated(!isAuthenticated)}>
-          {isAuthenticated ? "Logout" : "Login"}
-        </button>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login setAuth={setIsAuthenticated} />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Protected route */}
         <Route
           path="/profile/*"
           element={
-            <ProtectedRoute isAuth={isAuthenticated}>
+            <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
@@ -49,7 +44,6 @@ export default function App() {
         {/* Dynamic blog route */}
         <Route path="/blog/:id" element={<BlogPost />} />
 
-        {/* Fallback route */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
